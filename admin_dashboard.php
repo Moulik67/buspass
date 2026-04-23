@@ -54,6 +54,7 @@ $approved = count(array_filter($applications, function($a) { return $a['status']
             text-decoration: none;
             border-radius: 8px;
             margin-right: 10px;
+            display: inline-block;
         }
         .logout-btn {
             background: #f56565;
@@ -140,6 +141,7 @@ $approved = count(array_filter($applications, function($a) { return $a['status']
                 <p>Welcome, <?php echo $_SESSION['user_name']; ?>!</p>
             </div>
             <div>
+                <a href="announcements.php" class="nav-btn">📢 Announcements</a>
                 <a href="routes.php" class="nav-btn">🚌 Routes</a>
                 <a href="contact.php" class="nav-btn">📞 Contact</a>
                 <a href="logout.php" class="logout-btn">🚪 Logout</a>
@@ -179,7 +181,16 @@ $approved = count(array_filter($applications, function($a) { return $a['status']
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th><th>Applicant</th><th>Email</th><th>Student Name</th><th>Route</th><th>Pass Type</th><th>Fee</th><th>Status</th><th>Payment</th><th>Action</th>
+                            <th>ID</th>
+                            <th>Applicant</th>
+                            <th>Email</th>
+                            <th>Student Name</th>
+                            <th>Route</th>
+                            <th>Pass Type</th>
+                            <th>Fee</th>
+                            <th>Status</th>
+                            <th>Payment</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

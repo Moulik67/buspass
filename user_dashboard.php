@@ -77,6 +77,7 @@ $payments = $stmt->fetchAll();
             text-decoration: none;
             border-radius: 8px;
             margin-right: 10px;
+            display: inline-block;
         }
         .grid-2 {
             display: grid;
@@ -152,6 +153,13 @@ $payments = $stmt->fetchAll();
             display: inline-block;
         }
         .btn-danger { background: #f56565; color: white; }
+        .announcement-item {
+            background: #f7fafc;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
             table { display: block; overflow-x: auto; }
@@ -175,6 +183,24 @@ $payments = $stmt->fetchAll();
         <?php if(isset($success)): ?>
             <div class="success">✅ <?php echo $success; ?></div>
         <?php endif; ?>
+
+        <!-- ANNOUNCEMENTS SECTION - NEW FEATURE ADDED BY FRIEND -->
+        <div class="card" style="margin-bottom: 20px;">
+            <h2>📢 Latest Announcements</h2>
+            <?php
+            $announcements = $pdo->query("SELECT * FROM announcements ORDER BY created_at DESC LIMIT 5")->fetchAll();
+            if(count($announcements) > 0): ?>
+                <?php foreach($announcements as $ann): ?>
+                    <div class="announcement-item">
+                        <strong>📌 <?php echo htmlspecialchars($ann['title']); ?></strong>
+                        <small style="color: #888;"> - <?php echo date('d-m-Y', strtotime($ann['created_at'])); ?></small>
+                        <p style="margin-top: 5px; font-size: 14px;"><?php echo htmlspecialchars($ann['message']); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No announcements yet. Check back later!</p>
+            <?php endif; ?>
+        </div>
 
         <div class="grid-2">
             <div class="card">

@@ -1,4 +1,5 @@
 <?php require_once 'config.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,6 +88,7 @@
         .nav-links {
             text-align: center;
             margin-top: 30px;
+            margin-bottom: 30px;
         }
         .nav-btn {
             display: inline-block;
@@ -139,6 +141,11 @@
                 <div class="module-icon">📊</div>
                 <h3>Module 5: Reports</h3>
                 <p>View Statistics & Generate Reports</p>
+            </div>
+            <div class="module-card">
+                <div class="module-icon">📢</div>
+                <h3>Module 6: Announcements</h3>
+                <p>View latest updates & notifications</p>
             </div>
         </div>
 
