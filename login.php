@@ -1,6 +1,8 @@
 <?php
 require_once 'config.php';
 
+ini_set('session.gc_maxlifetime', 3600);
+
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
