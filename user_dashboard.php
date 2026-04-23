@@ -177,6 +177,11 @@ $payments = $stmt->fetchAll();
             <a href="logout.php" class="logout-btn">🚪 Logout</a>
         </div>
 
+    <!-- Quick Help Section -->
+<div style="background: #e8f4f8; padding: 10px 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; border-left: 4px solid #667eea;">
+    💡 Need help? Contact support: <strong>support@buspass.com</strong> | Call: <strong>+91 98765 43210</strong>
+</div>
+
         <?php if(isset($success)): ?>
             <div class="success">✅ <?php echo $success; ?></div>
         <?php endif; ?>
