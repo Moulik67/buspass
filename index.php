@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bus Pass Management System</title>
     <style>
+        .loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -91,6 +102,13 @@
             margin-top: 15px;
             font-size: 14px;
         }
+        <div class="loading" id="loading">Processing...</div>
+
+<script>
+document.querySelector('form').addEventListener('submit', function() {
+    document.getElementById('loading').style.display = 'block';
+});
+</script>
     </style>
 </head>
 <body>
