@@ -27,6 +27,7 @@ $pending = count(array_filter($applications, function($a) { return $a['status'] 
 $approved = count(array_filter($applications, function($a) { return $a['status'] == 'approved'; }));
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -157,6 +158,14 @@ $approved = count(array_filter($applications, function($a) { return $a['status']
                 <div class="stat-label">Total Revenue</div>
             </div>
         </div>
+
+        <!-- Admin Tips -->
+<div class="card" style="background: #e8f4f8; margin-bottom: 20px;">
+    <h3 style="color: #667eea;">📌 Admin Tips</h3>
+    <p>• Click on application status to approve/reject passes</p>
+    <p>• Use Export Report to download data in CSV format</p>
+    <p>• Post announcements to keep users updated</p>
+</div>
 
         <?php if(isset($success)): ?>
             <div class="success">✅ <?php echo $success; ?></div>
