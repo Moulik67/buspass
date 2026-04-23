@@ -15,7 +15,6 @@ fputcsv($output, []);
 fputcsv($output, ['BUS PASS SYSTEM - COMPLETE REPORT']);
 fputcsv($output, []);
 
-// Applications report
 fputcsv($output, ['BUS PASS APPLICATIONS']);
 fputcsv($output, ['ID', 'Student Name', 'Email', 'Route', 'Pass Type', 'Fee', 'Status', 'Payment Status', 'Applied Date']);
 

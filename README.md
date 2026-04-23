@@ -1,66 +1,66 @@
 # Bus Pass Management System
 
-A complete web-based Bus Pass Management System with 5 working modules.
+## Version 1.1 - Added New Features
+
+### 🚌 Complete Bus Pass Management System with 7 Modules
 
 ## Features
 
 ### Module 1: User Management
-- User registration and login
-- Session management
-- Role-based access (User/Admin)
+- User Registration & Login
+- Session Management
+- Role-based Access (User/Admin)
 
 ### Module 2: Bus Pass Application
-- Apply for new bus pass
-- View application status
-- Track application history
+- Apply for New Pass
+- Select Routes
+- Choose Pass Type (Monthly/Quarterly/Yearly)
+- Track Application Status
 
 ### Module 3: Admin Approval System
-- View all applications
-- Approve or reject passes
-- Admin dashboard with statistics
+- View All Applications
+- Approve/Reject with Comments
+- Dashboard Statistics
 
 ### Module 4: Payment System
-- Pay for approved passes
-- Generate payment receipts
-- Payment history tracking
+- Pay for Approved Passes
+- Multiple Payment Methods
+- Automatic Receipt Generation
+- Download/Print Receipts
 
 ### Module 5: Reports Module
-- View system statistics
-- Export reports to CSV
-- Revenue tracking
+- Export Data to CSV
+- Revenue Tracking
+- Application Analytics
 
-## Technologies Used
+### Module 6: Bus Routes Information (NEW in v1.1)
+- View All Available Routes
+- Route Details with Timings
+- Stop Information
+- Fare Details
 
-- PHP (Backend)
-- MySQL (Database)
-- HTML5 & CSS3 (Frontend)
-- JavaScript (Interactivity)
+### Module 7: Contact Us Page (NEW in v1.1)
+- Office Address
+- Contact Numbers
+- Email Support
+- Social Media Links
+- Working Hours
 
-## Installation Guide
+## Installation
 
-### Prerequisites
-- XAMPP (or any PHP/MySQL server)
+1. Install XAMPP
+2. Copy files to `C:\xampp\htdocs\bus-pass-system`
+3. Import `database.sql` in phpMyAdmin
+4. Start Apache and MySQL
+5. Open `http://localhost/bus-pass-system`
 
-### Steps to Install
+## Default Login
 
-1. **Start XAMPP**
-   - Start Apache and MySQL services
+**Admin:**
+- Email: admin@buspass.com
+- Password: admin123
 
-2. **Copy Files**
-   - Copy this entire folder to: `C:\xampp\htdocs\bus-pass-system`
+**Test User:**
+- Register new account
 
-3. **Database Setup**
-   - Open phpMyAdmin: `http://localhost/phpmyadmin`
-   - Create database: `bus_pass_system`
-   - Import the database from `database.sql` file
-
-4. **Configure Database**
-   - Open `config.php`
-   - Update database credentials if needed
-   - Default: username `root`, password `""` (empty)
-
-5. **Run the Application**
-   - Open browser
-   - Go to: `http://localhost/bus-pass-system`
-
-## Default Admin Login
+## Project Structure

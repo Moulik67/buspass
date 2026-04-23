@@ -1,4 +1,5 @@
--- Use your existing database
+-- Create database
+CREATE DATABASE IF NOT EXISTS bus_pass_system;
 USE bus_pass_system;
 
 -- Users table
@@ -45,6 +46,11 @@ CREATE TABLE IF NOT EXISTS payments (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- Insert admin account
+-- Insert admin account (password: admin123)
 INSERT IGNORE INTO users (name, email, password, role) 
 VALUES ('Admin', 'admin@buspass.com', 'admin123', 'admin');
+
+-- Insert sample routes data
+INSERT IGNORE INTO bus_applications (user_id, student_name, student_id, source_stop, destination_stop, route_number, pass_type, fee, valid_from, valid_to, status) 
+SELECT 1, 'Demo Student', 'STU001', 'North Gate', 'University', 'R101', 'Monthly', 500, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 MONTH), 'approved' 
+WHERE NOT EXISTS (SELECT 1 FROM bus_applications WHERE student_id='STU001');
