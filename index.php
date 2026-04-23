@@ -146,4 +146,8 @@
         }
     </script>
 </body>
+<!-- Footer -->
+<div style="text-align: center; margin-top: 20px; color: white; font-size: 12px;">
+    <p>Version 1.7 | Bus Pass Management System © 2024</p>
+</div>
 </html>
