@@ -6,6 +6,7 @@ if(!isAdmin()) {
     exit();
 }
 
+// Handle status update
 if(isset($_POST['update_status'])) {
     $sql = "UPDATE bus_applications SET status = ?, admin_comment = ? WHERE id = ?";
     $stmt = $pdo->prepare($sql);
@@ -13,10 +14,12 @@ if(isset($_POST['update_status'])) {
     $success = "Application status updated!";
 }
 
+// Get all applications
 $applications = $pdo->query("SELECT a.*, u.name, u.email FROM bus_applications a 
                              JOIN users u ON a.user_id = u.id 
                              ORDER BY a.applied_date DESC")->fetchAll();
 
+// Get statistics
 $total_users = $pdo->query("SELECT COUNT(*) FROM users WHERE role='user'")->fetchColumn();
 $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments")->fetchColumn();
 $total_applications = count($applications);
@@ -45,23 +48,6 @@ $approved = count(array_filter($applications, function($a) { return $a['status']
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-        }
-        .nav-btn {
-            background: #48bb78;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-right: 10px;
-            display: inline-block;
-        }
-        .logout-btn {
-            background: #f56565;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 8px;
         }
         .stats {
             display: grid;
@@ -94,8 +80,6 @@ $approved = count(array_filter($applications, function($a) { return $a['status']
         table {
             width: 100%;
             border-collapse: collapse;
-            overflow-x: auto;
-            display: block;
         }
         th, td {
             padding: 12px;
@@ -127,9 +111,13 @@ $approved = count(array_filter($applications, function($a) { return $a['status']
             border-radius: 8px;
             margin-bottom: 20px;
         }
+        .btn-report {
+            background: #48bb78;
+            padding: 10px 20px;
+            margin-left: 10px;
+        }
         @media (max-width: 768px) {
             .stats { grid-template-columns: repeat(2, 1fr); }
-            table { display: block; overflow-x: auto; }
         }
     </style>
 </head>
@@ -141,13 +129,12 @@ $approved = count(array_filter($applications, function($a) { return $a['status']
                 <p>Welcome, <?php echo $_SESSION['user_name']; ?>!</p>
             </div>
             <div>
-                <a href="announcements.php" class="nav-btn">📢 Announcements</a>
-                <a href="routes.php" class="nav-btn">🚌 Routes</a>
-                <a href="contact.php" class="nav-btn">📞 Contact</a>
-                <a href="logout.php" class="logout-btn">🚪 Logout</a>
+                <a href="export_report.php" class="btn-report" style="background:#48bb78; color:white; padding:10px 20px; text-decoration:none; border-radius:8px;">📊 Export Report</a>
+                <a href="logout.php" style="background:#f56565; color:white; padding:10px 20px; text-decoration:none; border-radius:8px; margin-left:10px;">🚪 Logout</a>
             </div>
         </div>
 
+        <!-- Module 5: Statistics -->
         <div class="stats">
             <div class="stat-card">
                 <div class="stat-number"><?php echo $total_users; ?></div>
@@ -175,22 +162,14 @@ $approved = count(array_filter($applications, function($a) { return $a['status']
             <div class="success">✅ <?php echo $success; ?></div>
         <?php endif; ?>
 
+        <!-- Module 3: Admin Approval System -->
         <div class="card">
-            <h2>✅ Approve/Reject Bus Pass Applications</h2>
+            <h2>✅ Module 3: Approve/Reject Bus Pass Applications</h2>
             <div style="overflow-x: auto;">
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Applicant</th>
-                            <th>Email</th>
-                            <th>Student Name</th>
-                            <th>Route</th>
-                            <th>Pass Type</th>
-                            <th>Fee</th>
-                            <th>Status</th>
-                            <th>Payment</th>
-                            <th>Action</th>
+                            <th>ID</th><th>Applicant</th><th>Email</th><th>Student Name</th><th>Route</th><th>Pass Type</th><th>Fee</th><th>Status</th><th>Payment</th><th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -6,6 +6,7 @@ if(isset($_POST['register'])) {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     
+    // Validate inputs
     if(empty($name) || empty($email) || empty($password)) {
         header("Location: index.php?error=All fields are required!");
         exit();
@@ -21,6 +22,7 @@ if(isset($_POST['register'])) {
         exit();
     }
     
+    // Check if email already exists
     $check = $pdo->prepare("SELECT * FROM users WHERE email = ?");
     $check->execute([$email]);
     
@@ -29,6 +31,7 @@ if(isset($_POST['register'])) {
         exit();
     }
     
+    // Insert user
     $sql = "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, 'user')";
     $stmt = $pdo->prepare($sql);
     

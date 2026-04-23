@@ -7,7 +7,7 @@ if(!isLoggedIn()) {
 }
 
 $payment_id = $_GET['id'];
-$stmt = $pdo->prepare("SELECT p.*, a.student_name, a.student_id, a.route_number, a.source_stop, a.destination_stop, a.valid_from, a.valid_to, a.pass_type 
+$stmt = $pdo->prepare("SELECT p.*, a.student_name, a.route_number, a.source_stop, a.destination_stop, a.valid_from, a.valid_to 
                        FROM payments p 
                        JOIN bus_applications a ON p.application_id = a.id 
                        WHERE p.id = ? AND p.user_id = ?");
@@ -42,9 +42,6 @@ if(!$payment) {
             padding-bottom: 20px;
             margin-bottom: 20px;
         }
-        .header h1 {
-            color: #667eea;
-        }
         .details {
             margin: 20px 0;
         }
@@ -78,17 +75,12 @@ if(!$payment) {
             border-radius: 5px;
             cursor: pointer;
         }
-        @media print {
-            button {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="receipt">
         <div class="header">
-            <h1>🚌 BUS PASS SYSTEM</h1>
+            <h1>BUS PASS SYSTEM</h1>
             <p>Official Payment Receipt</p>
             <p><strong>Receipt No:</strong> <?php echo $payment['receipt_number']; ?></p>
             <p><strong>Date:</strong> <?php echo date('d-m-Y H:i:s', strtotime($payment['payment_date'])); ?></p>
@@ -96,8 +88,6 @@ if(!$payment) {
         
         <div class="details">
             <div class="row"><strong>Student Name:</strong> <span><?php echo $payment['student_name']; ?></span></div>
-            <div class="row"><strong>Student ID:</strong> <span><?php echo $payment['student_id']; ?></span></div>
-            <div class="row"><strong>Pass Type:</strong> <span><?php echo $payment['pass_type']; ?></span></div>
             <div class="row"><strong>Route Number:</strong> <span><?php echo $payment['route_number']; ?></span></div>
             <div class="row"><strong>Source Stop:</strong> <span><?php echo $payment['source_stop']; ?></span></div>
             <div class="row"><strong>Destination Stop:</strong> <span><?php echo $payment['destination_stop']; ?></span></div>
@@ -110,7 +100,6 @@ if(!$payment) {
         <div class="footer">
             <p>Thank you for using Bus Pass System!</p>
             <p>This is a computer generated receipt - No signature required</p>
-            <p>For any queries, contact: support@buspass.com</p>
         </div>
     </div>
     <button onclick="window.print()">🖨️ Print Receipt</button>
